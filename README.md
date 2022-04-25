@@ -1,4 +1,4 @@
-**Unmaintained**: This is no longer under active development. I really loved seeing that the images were found so useful by so many peole. Sadly I did not have the time for quite a wile to follow up on the requests or help establishing a healthy community around it. Also my past attemt to transfer this repo to the activemq org failed. Therefore I am going to archive this and I hope that you will find another place for great activemq containers.
+**Unmaintained**: This is no longer under active development. I really loved seeing that the images were found so useful by so many people. Sadly I did not have the time for quite a while to follow up on the requests or help establishing a healthy community around it. Also my past attempt to transfer this repo to the activemq org failed. Therefore I am going to archive this and I hope that you will find another place for great activemq containers.
 
 
 docker-activemq
