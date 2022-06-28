@@ -18,8 +18,8 @@ node {
                     sh "docker build --build-arg BASE_IMAGE=${build.baseImage}-alpine --build-arg ACTIVEMQ_VERSION=${build.version} --build-arg ACTIVEMQ_VERSION=${build.version} --build-arg SHA512_VAL=${build.hash} -t ${repository}:${build.version}-alpine ."
                 }
             }
-            sh "docker tag ${repository}:${builds[0].version} latest"
-            sh "docker tag ${repository}:${builds[0].version}-alpine latest-alpine"
+            sh "docker tag ${repository}:${builds[0].version} ${repository}:latest"
+            sh "docker tag ${repository}:${builds[0].version}-alpine ${repository}:latest-alpine"
         }
     }
     stage('publish') {
