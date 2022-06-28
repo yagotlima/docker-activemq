@@ -25,6 +25,9 @@ RUN tar xzf $ACTIVEMQ-bin.tar.gz -C  /opt && \
     chown -R activemq:activemq /opt/$ACTIVEMQ && \
     chown -h activemq:activemq $ACTIVEMQ_HOME
 
+VOLUME "/opt/$ACTIVEMQ/data"
+VOLUME "/opt/$ACTIVEMQ/conf"
+
 USER activemq
 
 WORKDIR $ACTIVEMQ_HOME

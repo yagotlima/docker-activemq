@@ -29,6 +29,9 @@ RUN tar xzf $ACTIVEMQ-bin.tar.gz -C  /opt && \
     apk del build-dependencies && \
     rm -rf /var/cache/apk/*
 
+VOLUME "/opt/$ACTIVEMQ/data"
+VOLUME "/opt/$ACTIVEMQ/conf"
+
 USER activemq
 
 WORKDIR $ACTIVEMQ_HOME
