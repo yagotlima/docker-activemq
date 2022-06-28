@@ -22,7 +22,7 @@ node {
                 }
             }
             sh "docker tag ${repository}:${builds[0].version} ${repository}:latest"
-            sh "docker tag ${repository}:${builds[0].version}-alpine ${repository}:latest-alpine"
+            sh "docker tag ${repository}:${builds.find{ it.alpine }.version}-alpine ${repository}:latest-alpine"
         }
     }
     stage('publish') {
