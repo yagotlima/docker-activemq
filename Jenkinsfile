@@ -22,4 +22,11 @@ node {
             sh "docker tag ${repository}:${builds[0].version}-alpine latest-alpine"
         }
     }
+    stage('publish') {
+        if (env.BRANCH_NAME == 'main') {
+            withDockerRegistry([credentialsId: 'dockerhub-yagotlima-activemq']) {
+                sh "docker image push --all-tags $repository"
+            }
+        }
+    }
 }
