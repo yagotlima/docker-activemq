@@ -9,7 +9,6 @@ ARG SHA512_VAL=35cae4258e38e47f9f81e785f547afc457fc331d2177bfc2391277ce24123be11
 
 ENV ACTIVEMQ_HOME /opt/activemq
 
-
 RUN curl "https://archive.apache.org/dist/activemq/$ACTIVEMQ_VERSION/$ACTIVEMQ-bin.tar.gz" -o $ACTIVEMQ-bin.tar.gz
 
 # Validate checksum
@@ -20,10 +19,10 @@ RUN if [ "$SHA512_VAL" != "$(sha512sum $ACTIVEMQ-bin.tar.gz | awk '{print($1)}')
     fi;
 
 RUN tar xzf $ACTIVEMQ-bin.tar.gz -C  /opt && \
-    ln -s /opt/$ACTIVEMQ $ACTIVEMQ_HOME && \
+    mv /opt/$ACTIVEMQ $ACTIVEMQ_HOME && \
+    sed -i 's/<property name="host" value="127.0.0.1"\/>/<property name="host" value="0.0.0.0"\/>/' $ACTIVEMQ_HOME/conf/jetty.xml && \
     useradd -r -M -d $ACTIVEMQ_HOME activemq && \
-    chown -R activemq:activemq /opt/$ACTIVEMQ && \
-    chown -h activemq:activemq $ACTIVEMQ_HOME
+    chown -R activemq:activemq $ACTIVEMQ_HOME
 
 VOLUME "/opt/$ACTIVEMQ/data"
 VOLUME "/opt/$ACTIVEMQ/conf"
